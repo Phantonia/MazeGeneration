@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Phantonia.Structures;
+
+IGraphProvider prov = new RectangularGraphProvider(width: 4, height: 3);
+
+GraphVertex<bool> graph = prov.GenerateGraph(defaultValue: false);
