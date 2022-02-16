@@ -22,15 +22,15 @@ public sealed class RectangularGraphProvider : IGraphProvider
 
     public int Width { get; }
 
-    public GraphVertex<T> GenerateGraph<T>(T? defaultValue = default)
+    public Graph<int> GenerateGraph()
     {
         // algorithm: see https://phantonia.notion.site/phantonia/Maze-generation-7e941990f6164380b68c98166ca658eb
 
-        List<GraphVertex<T>> vertices = new(capacity: Width * Height);
+        List<GraphVertex<int>> vertices = new(capacity: Width * Height);
 
         for (int i = 0; i < Width * Height; i++)
         {
-            vertices.Add(new GraphVertex<T> { Value = defaultValue });
+            vertices.Add(new GraphVertex<int> { Value = i });
         }
 
         for (int i = 0; i < Width * Height; i++)
@@ -56,6 +56,6 @@ public sealed class RectangularGraphProvider : IGraphProvider
             }
         }
 
-        return vertices[0];
+        return new Graph<int>(vertices[0]);
     }
 }

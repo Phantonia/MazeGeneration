@@ -2,5 +2,5 @@
 
 public interface IGraphProvider
 {
-    public abstract GraphVertex<T> GenerateGraph<T>(T? defaultValue = default);
+    public abstract Graph<int> GenerateGraph();
 }
