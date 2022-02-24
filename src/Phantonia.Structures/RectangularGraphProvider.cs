@@ -26,36 +26,38 @@ public sealed class RectangularGraphProvider : IGraphProvider
     {
         // algorithm: see https://phantonia.notion.site/phantonia/Maze-generation-7e941990f6164380b68c98166ca658eb
 
+        Graph<int> graph = new();
         List<GraphVertex<int>> vertices = new(capacity: Width * Height);
 
         for (int i = 0; i < Width * Height; i++)
         {
-            vertices.Add(new GraphVertex<int> { Value = i });
+            GraphVertex<int> vertex = graph.AddVertex(value: i);
+            vertices.Add(vertex);
         }
 
         for (int i = 0; i < Width * Height; i++)
         {
             if (i % Width != 0)
             {
-                vertices[i].Neighbors.Add(vertices[i - 1]);
+                _ = graph.AddEdge(vertices[i], vertices[i - 1]);
             }
 
             if (i % Width != Width - 1)
             {
-                vertices[i].Neighbors.Add(vertices[i + 1]);
+                _ = graph.AddEdge(vertices[i], vertices[i + 1]);
             }
 
             if (i >= Width)
             {
-                vertices[i].Neighbors.Add(vertices[i - Width]);
+                _ = graph.AddEdge(vertices[i], vertices[i - Width]);
             }
 
             if (i < (Height - 1) * Width)
             {
-                vertices[i].Neighbors.Add(vertices[i + Width]);
+                _ = graph.AddEdge(vertices[i], vertices[i + Width]);
             }
         }
 
-        return new Graph<int>(vertices);
+        return graph;
     }
 }
