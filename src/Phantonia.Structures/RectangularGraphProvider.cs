@@ -56,6 +56,6 @@ public sealed class RectangularGraphProvider : IGraphProvider
             }
         }
 
-        return new Graph<int>(vertices[0]);
+        return new Graph<int>(vertices);
     }
 }

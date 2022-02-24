@@ -29,5 +29,10 @@ public sealed class Graph<T>
         Vertices = allVertices.ToList().AsReadOnly();
     }
 
+    internal Graph(IList<GraphVertex<T>> vertices)
+    {
+        Vertices = new ReadOnlyCollection<GraphVertex<T>>(vertices);
+    }
+
     public ReadOnlyCollection<GraphVertex<T>> Vertices { get; }
 }

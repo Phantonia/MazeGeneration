@@ -1,19 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Phantonia.MazeGeneration\Phantonia.MazeGeneration.csproj" />
     <ProjectReference Include="..\Phantonia.Structures\Phantonia.Structures.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NGraphics" Version="0.5.0" />
   </ItemGroup>
 
 </Project>
