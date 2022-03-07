@@ -33,83 +33,97 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textboxHeight = new System.Windows.Forms.TextBox();
-            this.comboboxDrawKind = new System.Windows.Forms.ComboBox();
             this.pictureboxVisuals = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxVisuals)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(12, 16);
+            this.buttonGenerate.Location = new System.Drawing.Point(8, 10);
+            this.buttonGenerate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGenerate.Name = "buttonGenerate";
-            this.buttonGenerate.Size = new System.Drawing.Size(112, 34);
+            this.buttonGenerate.Size = new System.Drawing.Size(78, 23);
             this.buttonGenerate.TabIndex = 0;
             this.buttonGenerate.Text = "Generate";
             this.buttonGenerate.UseVisualStyleBackColor = true;
             // 
             // textboxWidth
             // 
-            this.textboxWidth.Location = new System.Drawing.Point(196, 16);
+            this.textboxWidth.Location = new System.Drawing.Point(137, 10);
+            this.textboxWidth.Margin = new System.Windows.Forms.Padding(2);
             this.textboxWidth.Name = "textboxWidth";
-            this.textboxWidth.Size = new System.Drawing.Size(150, 31);
+            this.textboxWidth.Size = new System.Drawing.Size(106, 23);
             this.textboxWidth.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 19);
+            this.label1.Location = new System.Drawing.Point(91, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 25);
+            this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Width";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(352, 18);
+            this.label2.Location = new System.Drawing.Point(246, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Height";
             // 
             // textboxHeight
             // 
-            this.textboxHeight.Location = new System.Drawing.Point(423, 16);
+            this.textboxHeight.Location = new System.Drawing.Point(296, 10);
+            this.textboxHeight.Margin = new System.Windows.Forms.Padding(2);
             this.textboxHeight.Name = "textboxHeight";
-            this.textboxHeight.Size = new System.Drawing.Size(150, 31);
+            this.textboxHeight.Size = new System.Drawing.Size(106, 23);
             this.textboxHeight.TabIndex = 4;
-            // 
-            // comboboxDrawKind
-            // 
-            this.comboboxDrawKind.FormattingEnabled = true;
-            this.comboboxDrawKind.Items.AddRange(new object[] {
-            "Maze",
-            "Graph"});
-            this.comboboxDrawKind.Location = new System.Drawing.Point(591, 14);
-            this.comboboxDrawKind.Name = "comboboxDrawKind";
-            this.comboboxDrawKind.Size = new System.Drawing.Size(182, 33);
-            this.comboboxDrawKind.TabIndex = 5;
             // 
             // pictureboxVisuals
             // 
-            this.pictureboxVisuals.Location = new System.Drawing.Point(12, 74);
+            this.pictureboxVisuals.Location = new System.Drawing.Point(8, 44);
+            this.pictureboxVisuals.Margin = new System.Windows.Forms.Padding(2);
             this.pictureboxVisuals.Name = "pictureboxVisuals";
-            this.pictureboxVisuals.Size = new System.Drawing.Size(1154, 658);
+            this.pictureboxVisuals.Size = new System.Drawing.Size(808, 395);
             this.pictureboxVisuals.TabIndex = 6;
             this.pictureboxVisuals.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(407, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Seed";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(445, 10);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 8;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 744);
+            this.ClientSize = new System.Drawing.Size(825, 446);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureboxVisuals);
-            this.Controls.Add(this.comboboxDrawKind);
             this.Controls.Add(this.textboxHeight);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textboxWidth);
             this.Controls.Add(this.buttonGenerate);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Maze generation";
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxVisuals)).EndInit();
@@ -125,7 +139,8 @@
         private Label label1;
         private Label label2;
         private TextBox textboxHeight;
-        private ComboBox comboboxDrawKind;
         private PictureBox pictureboxVisuals;
+        private Label label3;
+        private TextBox textBox1;
     }
 }

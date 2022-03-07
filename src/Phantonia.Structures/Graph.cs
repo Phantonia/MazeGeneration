@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 namespace Phantonia.Structures;
 
+[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public sealed class Graph<T>
 {
     public Graph()
@@ -53,6 +54,8 @@ public sealed class Graph<T>
             vertexA.MutableNeighbors.Add(vertexB);
             vertexB.MutableNeighbors.Add(vertexA);
 
+            edges.Add(edge);
+
             return edge;
         }
     }
@@ -79,6 +82,12 @@ public sealed class Graph<T>
 
         edge.Graph = null;
         edges.Remove(edge);
+
+        edge.VertexA.MutableEdges.Remove(edge);
+        edge.VertexA.MutableNeighbors.Remove(edge.VertexB);
+
+        edge.VertexB.MutableEdges.Remove(edge);
+        edge.VertexB.MutableNeighbors.Remove(edge.VertexB);
     }
 
     public void RemoveVertex(GraphVertex<T> vertex)
@@ -109,45 +118,6 @@ public sealed class Graph<T>
         vertex.Graph = null;
         vertices.Remove(vertex);
     }
-}
 
-public sealed class GraphVertex<T>
-{
-    internal GraphVertex(Graph<T> graph, T value)
-    {
-        Graph = graph;
-        Value = value;
-        MutableNeighbors = new List<GraphVertex<T>>();
-        Neighbors = new ReadOnlyCollection<GraphVertex<T>>(MutableNeighbors);
-        MutableEdges = new List<GraphEdge<T>>();
-        Edges = new ReadOnlyCollection<GraphEdge<T>>(MutableEdges);
-    }
-
-    public T Value { get; }
-
-    public Graph<T>? Graph { get; internal set; }
-
-    internal List<GraphVertex<T>> MutableNeighbors { get; }
-
-    public ReadOnlyCollection<GraphVertex<T>> Neighbors { get; }
-
-    internal List<GraphEdge<T>> MutableEdges { get; }
-
-    public ReadOnlyCollection<GraphEdge<T>> Edges { get; }
-}
-
-public sealed class GraphEdge<T>
-{
-    internal GraphEdge(Graph<T> graph, GraphVertex<T> vertexA, GraphVertex<T> vertexB)
-    {
-        Graph = graph;
-        VertexA = vertexA;
-        VertexB = vertexB;
-    }
-
-    public Graph<T>? Graph { get; internal set; }
-
-    public GraphVertex<T> VertexA { get; }
-
-    public GraphVertex<T> VertexB { get; }
+    private string GetDebuggerDisplay() => $"Graph with {Vertices.Count} vertices and {Edges.Count} edges";
 }
