@@ -44,9 +44,25 @@ public sealed class MazeGenerator
     {
         Graph<int> graph = GenerateMazeAsGraph();
 
-        return graph.Edges
-                    .Select(e => new Wall(Math.Min(e.VertexA.Value, e.VertexB.Value), Math.Max(e.VertexA.Value, e.VertexB.Value)))
-                    .ToImmutableArray();
+        Debug.WriteLine("Edges:");
+        foreach (GraphEdge<int> edge in graph.Edges)
+        {
+            Debug.WriteLine($"{edge.VertexA.Value} to {edge.VertexB.Value}");
+        }
+        Debug.WriteLine("");
+
+        ImmutableArray<Wall> walls =  graph.Edges
+                                           .Select(e => new Wall(Math.Min(e.VertexA.Value, e.VertexB.Value), Math.Max(e.VertexA.Value, e.VertexB.Value)))
+                                           .ToImmutableArray();
+
+        Debug.WriteLine("Walls:");
+        foreach (Wall wall in walls)
+        {
+            Debug.WriteLine($"{wall.LowerCellIndex} to {wall.HigherCellIndex}");
+        }
+        Debug.WriteLine("");
+
+        return walls;
     }
 
     private void Progress(GraphVertex<int> vertex)

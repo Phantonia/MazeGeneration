@@ -32,34 +32,44 @@ public sealed partial class MainForm : Form
 
     private void OnPaint(object? sender, PaintEventArgs e)
     {
-        const float X0 = 10.0F;
-        const float Y0 = 10.0F;
-        const float Length = 20.0F;
+        const int Margin = 20;
 
-        using Pen wallPen = new(Color.Black, width: 4.0F);
+        float length = (float)Math.Min(pictureboxVisuals.Width - 2 * Margin, pictureboxVisuals.Height - 2 * Margin) / Math.Max(width, height);
+        
+        using Pen wallPen = new(Color.White, width: 4.0F);
 
-        e.Graphics.DrawRectangle(wallPen, new Rectangle((int)X0, (int)Y0, (int)(Length * width), (int)(Length * height)));
+        e.Graphics.Clear(Color.FromArgb(31, 31, 31));
+
+        e.Graphics.DrawRectangle(wallPen, new Rectangle(x: Margin, y: Margin, (int)(length * width), (int)(length * height)));
 
         if (this.walls is ImmutableArray<Wall> walls)
         {
             foreach (Wall wall in walls)
             {
-                float xw = X0 + Length * (wall.LowerCellIndex % width);
-                float yw = Y0 + Length * MathF.Floor(wall.LowerCellIndex / width);
+                float xw = Margin + length * (wall.LowerCellIndex % width);
+                float yw = Margin + length * MathF.Floor(wall.LowerCellIndex / width);
 
-                if (wall.HigherCellIndex == wall.LowerCellIndex + 1) // vertical wall
+                if (wall.HigherCellIndex == wall.LowerCellIndex + 1) // horizontal domino = vertical wall
                 {
+                    xw += length;
+
                     PointF p0 = new(xw, yw);
-                    PointF p1 = new(xw, yw + Length);
+                    PointF p1 = new(xw, yw + length);
+
+                    Debug.WriteLine($"Vertical wall: {wall.LowerCellIndex} to {wall.HigherCellIndex}; Points {p0} to {p1}");
 
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
-                else
+                else // vertical domino = horizontal wall
                 {
                     Debug.Assert(wall.HigherCellIndex == wall.LowerCellIndex + width);
 
+                    yw += length;
+
                     PointF p0 = new(xw, yw);
-                    PointF p1 = new(xw + Length, yw);
+                    PointF p1 = new(xw + length, yw);
+
+                    Debug.WriteLine($"Horizontal wall: {wall.LowerCellIndex} to {wall.HigherCellIndex}; Points {p0} to {p1}");
 
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
