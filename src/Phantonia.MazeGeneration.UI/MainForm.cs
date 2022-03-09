@@ -76,8 +76,6 @@ public sealed partial class MainForm : Form
                     PointF p0 = new(xw, yw);
                     PointF p1 = new(xw, yw + length);
 
-                    Debug.WriteLine($"Vertical wall: {wall.LowerCellIndex} to {wall.HigherCellIndex}; Points {p0} to {p1}");
-
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
                 else // vertical domino = horizontal wall
@@ -88,8 +86,6 @@ public sealed partial class MainForm : Form
 
                     PointF p0 = new(xw, yw);
                     PointF p1 = new(xw + length, yw);
-
-                    Debug.WriteLine($"Horizontal wall: {wall.LowerCellIndex} to {wall.HigherCellIndex}; Points {p0} to {p1}");
 
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
