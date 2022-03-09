@@ -5,11 +5,14 @@ namespace Phantonia.MazeGeneration.UI;
 
 public sealed partial class MainForm : Form
 {
+    private static readonly Random Rng = new();
+
     public MainForm()
     {
         InitializeComponent();
 
         buttonGenerate.Click += OnButtonGenerate;
+        buttonRandomSeed.Click += OnButtonRandomSeed;
         pictureboxVisuals.Paint += OnPaint;
     }
 
@@ -17,17 +20,34 @@ public sealed partial class MainForm : Form
 
     private int width;
     private int height;
+    private int? seed;
 
     private void OnButtonGenerate(object? sender, EventArgs e)
     {
-        if (!TryGetWidthAndHeight(out width, out height))
+        if (!TryGetWidthAndHeight(out width, out height, out seed))
         {
             return;
         }
 
-        walls = new MazeGenerator(width, height).GenerateMazeAsWalls();
+        MazeGenerator generator;
+
+        if (seed is null)
+        {
+            generator = new MazeGenerator(width, height);
+        }
+        else
+        {
+            generator = new MazeGenerator(width, height, (int)seed);
+        }
+
+        walls = generator.GenerateMazeAsWalls();
 
         pictureboxVisuals.Invalidate();
+    }
+
+    private void OnButtonRandomSeed(object? sender, EventArgs e)
+    {
+        textboxSeed.Text = Rng.Next().ToString();
     }
 
     private void OnPaint(object? sender, PaintEventArgs e)
@@ -77,21 +97,36 @@ public sealed partial class MainForm : Form
         }
     }
 
-    private bool TryGetWidthAndHeight(out int width, out int height)
+    private bool TryGetWidthAndHeight(out int width, out int height, out int? seed)
     {
         if (!int.TryParse(textboxWidth.Text, out width))
         {
             MessageBox.Show($"Width '{textboxWidth.Text}' is not an integer.", "Error");
             height = 0;
+            seed = null;
             return false;
         }
 
         if (!int.TryParse(textboxHeight.Text, out height))
         {
             MessageBox.Show($"Height '{textboxHeight.Text}' is not an integer.", "Error");
+            seed = null;
             return false;
         }
 
+        if (textboxSeed.Text == "")
+        {
+            seed = null;
+            return true;
+        }
+
+        if (!int.TryParse(textboxSeed.Text, out int localSeed))
+        {
+            seed = null;
+            return false;
+        }
+
+        seed = localSeed;
         return true;
     }
 }
