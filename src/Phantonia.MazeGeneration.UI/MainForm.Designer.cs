@@ -51,7 +51,7 @@
             // 
             // textboxWidth
             // 
-            this.textboxWidth.Location = new System.Drawing.Point(196, 17);
+            this.textboxWidth.Location = new System.Drawing.Point(378, 21);
             this.textboxWidth.Name = "textboxWidth";
             this.textboxWidth.Size = new System.Drawing.Size(150, 31);
             this.textboxWidth.TabIndex = 1;
@@ -59,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 18);
+            this.label1.Location = new System.Drawing.Point(312, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 25);
             this.label1.TabIndex = 2;
@@ -68,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(351, 18);
+            this.label2.Location = new System.Drawing.Point(534, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 25);
             this.label2.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // textboxHeight
             // 
-            this.textboxHeight.Location = new System.Drawing.Point(423, 17);
+            this.textboxHeight.Location = new System.Drawing.Point(605, 21);
             this.textboxHeight.Name = "textboxHeight";
             this.textboxHeight.Size = new System.Drawing.Size(150, 31);
             this.textboxHeight.TabIndex = 4;
@@ -92,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(581, 22);
+            this.label3.Location = new System.Drawing.Point(762, 24);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 25);
@@ -101,7 +101,7 @@
             // 
             // textboxSeed
             // 
-            this.textboxSeed.Location = new System.Drawing.Point(636, 17);
+            this.textboxSeed.Location = new System.Drawing.Point(821, 22);
             this.textboxSeed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textboxSeed.Name = "textboxSeed";
             this.textboxSeed.Size = new System.Drawing.Size(141, 31);
@@ -109,9 +109,9 @@
             // 
             // buttonRandomSeed
             // 
-            this.buttonRandomSeed.Location = new System.Drawing.Point(784, 19);
+            this.buttonRandomSeed.Location = new System.Drawing.Point(128, 17);
             this.buttonRandomSeed.Name = "buttonRandomSeed";
-            this.buttonRandomSeed.Size = new System.Drawing.Size(178, 34);
+            this.buttonRandomSeed.Size = new System.Drawing.Size(178, 38);
             this.buttonRandomSeed.TabIndex = 9;
             this.buttonRandomSeed.Text = "Get random seed";
             this.buttonRandomSeed.UseVisualStyleBackColor = true;
