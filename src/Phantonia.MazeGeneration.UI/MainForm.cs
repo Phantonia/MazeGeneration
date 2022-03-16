@@ -72,9 +72,10 @@ public sealed partial class MainForm : Form
                 if (wall.HigherCellIndex == wall.LowerCellIndex + 1) // horizontal domino = vertical wall
                 {
                     xw += length;
+                    yw -= 2.0F;
 
                     PointF p0 = new(xw, yw);
-                    PointF p1 = new(xw, yw + length);
+                    PointF p1 = new(xw, yw + length + 4.0F);
 
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
@@ -83,9 +84,10 @@ public sealed partial class MainForm : Form
                     Debug.Assert(wall.HigherCellIndex == wall.LowerCellIndex + width);
 
                     yw += length;
+                    xw -= 2.0F;
 
                     PointF p0 = new(xw, yw);
-                    PointF p1 = new(xw + length, yw);
+                    PointF p1 = new(xw + length + 4.0F, yw);
 
                     e.Graphics.DrawLine(wallPen, p0, p1);
                 }
