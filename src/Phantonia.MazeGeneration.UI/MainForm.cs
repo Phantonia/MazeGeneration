@@ -40,7 +40,7 @@ public sealed partial class MainForm : Form
             generator = new MazeGenerator(width, height, (int)seed);
         }
 
-        walls = generator.GenerateMazeAsWalls();
+        walls = generator.GenerateMazeAsWalls((int)updownCycleNumber.Value);
 
         pictureboxVisuals.Invalidate();
     }

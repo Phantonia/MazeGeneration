@@ -37,7 +37,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textboxSeed = new System.Windows.Forms.TextBox();
             this.buttonRandomSeed = new System.Windows.Forms.Button();
+            this.updownCycleNumber = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxVisuals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updownCycleNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonGenerate
@@ -85,14 +88,14 @@
             // 
             this.pictureboxVisuals.Location = new System.Drawing.Point(11, 73);
             this.pictureboxVisuals.Name = "pictureboxVisuals";
-            this.pictureboxVisuals.Size = new System.Drawing.Size(1154, 658);
+            this.pictureboxVisuals.Size = new System.Drawing.Size(1406, 658);
             this.pictureboxVisuals.TabIndex = 6;
             this.pictureboxVisuals.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(762, 24);
+            this.label3.Location = new System.Drawing.Point(1104, 24);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 25);
@@ -101,7 +104,7 @@
             // 
             // textboxSeed
             // 
-            this.textboxSeed.Location = new System.Drawing.Point(821, 22);
+            this.textboxSeed.Location = new System.Drawing.Point(1163, 22);
             this.textboxSeed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textboxSeed.Name = "textboxSeed";
             this.textboxSeed.Size = new System.Drawing.Size(141, 31);
@@ -116,11 +119,29 @@
             this.buttonRandomSeed.Text = "Get random seed";
             this.buttonRandomSeed.UseVisualStyleBackColor = true;
             // 
+            // updownCycleNumber
+            // 
+            this.updownCycleNumber.Location = new System.Drawing.Point(917, 21);
+            this.updownCycleNumber.Name = "updownCycleNumber";
+            this.updownCycleNumber.Size = new System.Drawing.Size(180, 31);
+            this.updownCycleNumber.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(761, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(150, 25);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Number of cycles";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 743);
+            this.ClientSize = new System.Drawing.Size(1429, 743);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.updownCycleNumber);
             this.Controls.Add(this.buttonRandomSeed);
             this.Controls.Add(this.textboxSeed);
             this.Controls.Add(this.label3);
@@ -133,6 +154,7 @@
             this.Name = "MainForm";
             this.Text = "Maze generation";
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxVisuals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updownCycleNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +171,7 @@
         private Label label3;
         private TextBox textboxSeed;
         private Button buttonRandomSeed;
+        private NumericUpDown updownCycleNumber;
+        private Label label4;
     }
 }

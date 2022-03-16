@@ -28,7 +28,7 @@ public sealed class MazeGenerator
 
     public int Width { get; }
 
-    public Graph<int> GenerateMazeAsGraph()
+    public Graph<int> GenerateMazeAsGraph(int cycleNumber = 0)
     {
         RectangularGraphProvider provider = new(Width, Height);
         Graph<int> graph = provider.GenerateGraph();
@@ -37,12 +37,18 @@ public sealed class MazeGenerator
 
         Progress(graph.Vertices[0]);
 
+        for (int i = 0; i < cycleNumber; i++)
+        {
+            GraphEdge<int> randomEdge = graph.Edges[rng.Next(graph.Edges.Count)];
+            graph.RemoveEdge(randomEdge);
+        }
+
         return graph;
     }
 
-    public ImmutableArray<Wall> GenerateMazeAsWalls()
+    public ImmutableArray<Wall> GenerateMazeAsWalls(int cycleNumber = 0)
     {
-        Graph<int> graph = GenerateMazeAsGraph();
+        Graph<int> graph = GenerateMazeAsGraph(cycleNumber);
 
         ImmutableArray<Wall> walls =  graph.Edges
                                            .Select(e => new Wall(Math.Min(e.VertexA.Value, e.VertexB.Value), Math.Max(e.VertexA.Value, e.VertexB.Value)))
