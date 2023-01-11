@@ -20,13 +20,21 @@ public sealed partial class MainForm : Form
 
     private int width;
     private int height;
-    private int? seed;
 
     private void OnButtonGenerate(object? sender, EventArgs e)
     {
-        if (!TryGetWidthAndHeight(out width, out height, out seed))
+        width = (int)updownWidth.Value;
+        height = (int)updownHeight.Value;
+        int? seed;
+
+        if (int.TryParse(textboxSeed.Text, out int givenSeed))
         {
-            return;
+            seed = givenSeed;
+        }
+        else
+        {
+            seed = null;
+            textboxSeed.Text = "";
         }
 
         MazeGenerator generator;
@@ -47,7 +55,8 @@ public sealed partial class MainForm : Form
 
     private void OnButtonRandomSeed(object? sender, EventArgs e)
     {
-        textboxSeed.Text = Rng.Next().ToString();
+        int seed = Rng.Next();
+        textboxSeed.Text = seed.ToString();
     }
 
     private void OnPaint(object? sender, PaintEventArgs e)
@@ -93,38 +102,5 @@ public sealed partial class MainForm : Form
                 }
             }
         }
-    }
-
-    private bool TryGetWidthAndHeight(out int width, out int height, out int? seed)
-    {
-        if (!int.TryParse(textboxWidth.Text, out width))
-        {
-            MessageBox.Show($"Width '{textboxWidth.Text}' is not an integer.", "Error");
-            height = 0;
-            seed = null;
-            return false;
-        }
-
-        if (!int.TryParse(textboxHeight.Text, out height))
-        {
-            MessageBox.Show($"Height '{textboxHeight.Text}' is not an integer.", "Error");
-            seed = null;
-            return false;
-        }
-
-        if (textboxSeed.Text == "")
-        {
-            seed = null;
-            return true;
-        }
-
-        if (!int.TryParse(textboxSeed.Text, out int localSeed))
-        {
-            seed = null;
-            return false;
-        }
-
-        seed = localSeed;
-        return true;
     }
 }
